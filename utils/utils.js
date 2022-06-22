@@ -1,0 +1,18 @@
+function saveToStorage(key, val) {
+    const str = JSON.stringify(val)
+    localStorage.setItem(key, str)
+}
+
+function loadFromStorage(key) {
+    const str = localStorage.getItem(key)
+    return JSON.parse(str)
+}
+
+function makeId(length = 6) {
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    var txt = ''
+    for (var i = 0; i < length; i++) {
+        txt += possible.charAt(Math.floor(Math.random() * possible.length))
+    }
+    return txt
+}
