@@ -7,20 +7,21 @@ var geoLoc_url = `https://maps.googleapis.com/maps/api/geocode/json?address=1600
 
 
 
+function getCoords(val){
+    return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${val},+&key=${geoLoc_api}`)
+    .then(res => res.data)
+    .then(pos => pos.results[0])
+    .then(pos => pos.geometry.location)
+}
+
 function setAdress({lat,lng}) {
     // console.log(pos);
     mapService.initMap(lat , lng)
 }
 
-function onSetAdress(...vals) {
-    console.log(vals);
-
-    var pos = axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${vals[0]}+${vals[1]}+,${vals[2]}+${vals[3]}+${vals[4]},+&key=${geoLoc_api}`)
-        .then(res => res.data)
-        .then(pos => pos.results[0])
-        .then(pos => setAdress(pos.geometry.location))
-
-}
+function onSetAdress(val) {
+    getCoords(val).then(pos => setAdress(pos))
+}   
 
 
 window.onload = onInit;
@@ -34,7 +35,7 @@ function onInit() {
         .then(() => {
             console.log('Map is ready');
         })
-        .catch(() => console.log('Error: cannot init map'));
+        .catch(() => console.log('Error: cannot init map'));      
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -54,6 +55,7 @@ function onAddMarker() {
 }
 
 function onGetLocs() {
+
     locService.getLocs()
         .then(locs => {
             console.log('Locations:', locs)
