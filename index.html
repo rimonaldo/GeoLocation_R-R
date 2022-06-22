@@ -22,28 +22,31 @@
            
         </header>
         
-        <section>
+        <section class="main-layout">
             <div class="location-info">
-                <h3>Location:</h3><span>City , State</span>
+                <h3>Location: <span>City , State</span></h3>
                 <button onclick="onGetLocs()" class="btn-get-locs">Copy Location</button>
             </div>
 
-            <section class="left-container">
-                <div class="weather"></div>
-                <div class="locations-table">
-                    <table>
-                        <th><td>locations</td></th>
-                        <tr><td>blah</td></tr>
-                        <tr><td>blah</td></tr>
-                        <tr><td>blah</td></tr>
-                    </table>
-                    <!-- <button onclick="onPanTo()"class="btn-pan">Pan Map to Tokyo</button> -->
-                </div>
-            </section>
-            
-            <section class="right-container">
-                <div id="map" style="width: 100%; height: 400px;"></div>
-            </section>
+            <main>
+                <section class="left-container">
+                    <div class="weather"></div>
+                    <div class="locations-table">
+                        <table>
+                            <th><td>locations</td></th>
+                            <tr><td>blah</td></tr>
+                            <tr><td>blah</td></tr>
+                            <tr><td>blah</td></tr>
+                            <tr><td>blah</td></tr>
+                        </table>
+                        <!-- <button onclick="onPanTo()"class="btn-pan">Pan Map to Tokyo</button> -->
+                    </div>
+                </section>
+                
+                <section class="right-container">
+                    <div id="map" style="width: 100%; height: 400px;"></div>
+                </section>
+            </main>
     
         <p>You are at: <span class="user-pos"></span></p>
         <p>Locations: <span class="locs"></span></p>

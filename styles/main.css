@@ -14,20 +14,88 @@ body{
 .main-layout{
     width: 90%;
     border: 1px black solid;
-    
+    margin: 0 auto;
 }
 
-header{
+header .main-layout{
     background-color: bisque;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
-header h1{
-    /* margin-inline-start: 1rem; */
+header{
+    background-color: bisque; 
 }
 
-header .search-container{
-    /* margin-inline-end: 1em; */
+.location-info{
+    display: flex;
+    border: 1px black solid;
+    justify-content: space-between;
+    width: 100%;
 }
+
+
+
+.location-info button{
+
+}
+
+.location-info h3 , .location-info span{
+    margin-inline-end: 1rem;
+}
+
+main {
+    display: flex;
+    
+}
+
+@media (max-width:650px) {   
+    main{
+        margin: 0 auto;
+        width: 80%;
+        flex-direction: column-reverse;
+    }
+
+    main .right-container{
+        margin-bottom: 1rem;
+    }
+
+    .left-container{
+        width: 100%;
+    }
+
+}
+
+.left-container{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    margin-inline-end: 1rem ;
+    border: 1px black solid;
+    justify-content: space-between;
+    height: 400px;
+    row-gap: 1rem;
+}
+
+.right-container{
+    flex-basis: 50%;
+}
+
+.weather{
+    flex-grow: 1;
+    border: 1px black solid;
+}
+
+.locations-table{
+
+}
+
+table{
+    width: 100%;
+    border: 1px black solid;
+}
+
+
+
