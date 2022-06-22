@@ -15,6 +15,7 @@ body{
     width: 90%;
     border: 1px black solid;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 header .main-layout{
@@ -35,8 +36,6 @@ header{
     justify-content: space-between;
     width: 100%;
 }
-
-
 
 .location-info button{
 

@@ -2,6 +2,7 @@ export const mapService = {
     initMap,
     addMarker,
     panTo,
+    
 }
 
 var gMap
@@ -14,8 +15,11 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
             center: { lat, lng },
             zoom: 15,
         })
-        console.log('Map!', gMap)
+        setQueryParams(gMap)
+        // console.log('Map!', gMap.center.lat())
     })
+
+   
 }
 
 function addMarker(loc) {
@@ -44,4 +48,18 @@ function _connectGoogleApi() {
         elGoogleApi.onload = resolve
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
+}
+
+
+
+function getPos(map){
+    return {lat: map.center.lat() , lng: map.center.lng()}
+}
+
+
+function setQueryParams(map){
+    var pos = getPos(map)
+    const queryStringParams = `?lat=${pos.lat}&lng=${pos.lng}`
+    const newUrl = window.location.protocol + '//' + window.location.host + window.location.pathname + queryStringParams
+    window.history.pushState({ path: newUrl }, '', newUrl)
 }
