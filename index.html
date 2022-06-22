@@ -4,17 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TravelTip</title>
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
-    <h1>TravelTip Starter</h1>
-    <div id="map" style="width: 100%; height: 400px;"></div>
-    <button onclick="onAddMarker()" class="btn-add-marker">Add Marker Speific Location</button>
-    <button onclick="onGetUserPos()" class="btn-user-pos">Get User Position</button>
-    <button onclick="onGetLocs()" class="btn-get-locs">Get Locations</button>
-    <button onclick="onPanTo()"class="btn-pan">Pan Map to Tokyo</button>
+    
 
-    <p>You are at: <span class="user-pos"></span></p>
-    <p>Locations: <span class="locs"></span></p>
+    <div class="layout">
+        <header>
+            <h1>TravelTip</h1>
+            <input placeholder="Enter Location" type="search"> 
+            <button onclick="onAddMarker()" class="btn-add-marker">Go</button>
+            <button onclick="onGetUserPos()" class="btn-user-pos">My Location</button>
+        </header>
+        
+        <section>
+            <div class="location-info">
+                <h3>Location:</h3><span>City , State</span>
+                <button onclick="onGetLocs()" class="btn-get-locs">Copy Location</button>
+            </div>
+
+            <section class="left-container">
+                <div class="weather"></div>
+                <div class="locations-table">
+                    <table>
+                        <th><td>locations</td></th>
+                        <tr><td>blah</td></tr>
+                        <tr><td>blah</td></tr>
+                        <tr><td>blah</td></tr>
+                    </table>
+                    <!-- <button onclick="onPanTo()"class="btn-pan">Pan Map to Tokyo</button> -->
+                </div>
+            </section>
+            
+            <section class="right-container">
+                <div id="map" style="width: 100%; height: 400px;"></div>
+            </section>
+    
+        <p>You are at: <span class="user-pos"></span></p>
+        <p>Locations: <span class="locs"></span></p>
+        </section>
+
+    </div>
     
 
     <script type="module" src="js/app.controller.js"></script>
