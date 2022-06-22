@@ -91,7 +91,9 @@ function onAddLocation() {
     if (!name) return
     var pos = getCoords(name).then(pos=>{
         locService.addLocation(name, pos.lat, pos.lng, id, )
+        renderLocations()
     })
+
 }
 
 
