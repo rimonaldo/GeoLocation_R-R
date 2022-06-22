@@ -2,7 +2,6 @@ export const mapService = {
     initMap,
     addMarker,
     panTo,
-    
 }
 
 // const geoLoc_api ='AIzaSyCjyt9JH-BnnLclS-0NmV9aUE7gv8ZtUHo'
@@ -33,8 +32,6 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
         setQueryParams(gMap)
         // console.log('Map!', gMap.center.lat())
     })
-
-   
 }
 
 function addMarker(loc) {
@@ -53,7 +50,7 @@ function panTo(lat, lng) {
 
 function _connectGoogleApi() {
     if (window.google) return Promise.resolve()
-    const API_KEY = 'AIzaSyCSBGSc4kotwFIda_iEjJJxVD6dle75Kpo' //TODO: Enter your API Key
+    const API_KEY = 'AIzaSyCSBGSc4kotwFIda_iEjJJxVD6dle75Kpo' //TODO: Enter your API Key // DONE
     var elGoogleApi = document.createElement('script')
     elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`
     elGoogleApi.async = true
@@ -65,13 +62,11 @@ function _connectGoogleApi() {
     })
 }
 
-
-function getPosParams(map){
-    return {lat: map.center.lat() , lng: map.center.lng()}
+function getPosParams(map) {
+    return { lat: map.center.lat(), lng: map.center.lng() }
 }
 
-
-function setQueryParams(map){
+function setQueryParams(map) {
     var pos = getPosParams(map)
     const queryStringParams = `?lat=${pos.lat}&lng=${pos.lng}`
     const newUrl = window.location.protocol + '//' + window.location.host + window.location.pathname + queryStringParams
