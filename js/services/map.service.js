@@ -4,21 +4,6 @@ export const mapService = {
     panTo,
 }
 
-// const geoLoc_api ='AIzaSyCjyt9JH-BnnLclS-0NmV9aUE7gv8ZtUHo'
-// var geoLoc_url = `https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${geoLoc_api}`
-
-// setAdress('j','r','q')
-
-// function setAdress(...vals){
-//     console.log(...vals);
-
-//     fetch.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${geoLoc_api}`).data
-//         .then((pos)=>{
-//             console.log(pos);
-//         })
-
-//     `https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${geoLoc_api}`
-// }
 var gMap
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {

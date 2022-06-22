@@ -2,6 +2,10 @@ export const locService = {
     getLocs,
     addLocation,
 }
+import { utils } from '../../utils/utils.js'
+
+const LOCS_KEY = 'My_Locations'
+
 
 const locs = [
     { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
@@ -16,7 +20,7 @@ function getLocs() {
     })
 }
 
-function addLocation(name, lat, lng) {
+function addLocation(name, lat, lng,id) {
     const loc = {
         id,
         name,
@@ -27,7 +31,8 @@ function addLocation(name, lat, lng) {
         updatedAt: Date.now(),
     }
     locs.push(loc)
-
+    utils.saveToStorage(LOCS_KEY , locs)
     console.log(locs)
     return loc
 }
+
