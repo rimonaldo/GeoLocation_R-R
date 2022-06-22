@@ -7,13 +7,9 @@ export const locService = {
 import { utils } from '../../utils/utils.js'
 
 const LOCS_KEY = 'My_Locations'
+const locs = utils.loadFromStorage(LOCS_KEY) || []
 
 let gMap
-
-const locs = [
-    { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
-    { name: 'Neveragain', lat: 32.047201, lng: 34.832581 },
-]
 
 function getLocs() {
     return new Promise((resolve, reject) => {
