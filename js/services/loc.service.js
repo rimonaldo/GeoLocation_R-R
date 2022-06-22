@@ -1,11 +1,14 @@
 export const locService = {
     getLocs,
     addLocation,
+    setUserLocation,
+    centerMapOnUser,
 }
 import { utils } from '../../utils/utils.js'
 
 const LOCS_KEY = 'My_Locations'
 
+let gMap
 
 const locs = [
     { name: 'Greatplace', lat: 32.047104, lng: 34.832384 },
@@ -20,7 +23,7 @@ function getLocs() {
     })
 }
 
-function addLocation(name, lat, lng,id) {
+function addLocation(name, lat, lng, id) {
     const loc = {
         id,
         name,
@@ -31,8 +34,25 @@ function addLocation(name, lat, lng,id) {
         updatedAt: Date.now(),
     }
     locs.push(loc)
-    utils.saveToStorage(LOCS_KEY , locs)
+    utils.saveToStorage(LOCS_KEY, locs)
     console.log(locs)
     return loc
 }
 
+function setUserLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(centerMapOnUser)
+    } else {
+        console.log('Geolocation is not supported by this browser.')
+    }
+}
+
+function centerMapOnUser(position) {
+    const center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+    }
+
+    console.log('Centering on', center)
+    gMap.setCenter(center)
+}

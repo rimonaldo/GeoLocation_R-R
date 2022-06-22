@@ -30,6 +30,7 @@ window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 window.onAddLocation = onAddLocation
+window.onSetUserLocation = onSetUserLocation
 
 function onInit() {
     mapService
@@ -53,14 +54,13 @@ function getPosition() {
 function onAddMarker() {
     var elSearchInput = document.querySelector('.search-container input').value
     onSetAdress(elSearchInput)
-    getCoords().then(pos=>{
+    getCoords().then(pos => {
         mapService.addMarker(pos)
     })
-
 }
 
 function onGetLocs() {
-    if(!document.querySelector('.search-container input').value) return
+    if (!document.querySelector('.search-container input').value) return
     var pos = getCoords().then(pos => {
         var copyText = gitPage + 'lat' + pos.lat + 'lng' + pos.lng
         navigator.clipboard.writeText(copyText)
@@ -84,9 +84,14 @@ function onPanTo() {
 
 function onAddLocation() {
     var id = utils.makeId()
-    var name = document.querySelector('.search-container input').value 
+    var name = document.querySelector('.search-container input').value
     if (!name) return
-    var pos = getCoords(name).then(pos=>{
-        locService.addLocation(name, pos.lat, pos.lng, id, )
+    var pos = getCoords(name).then(pos => {
+        locService.addLocation(name, pos.lat, pos.lng, id)
     })
+}
+
+function onSetUserLocation() {
+    console.log('setting user location...')
+    locService.setUserLocation()
 }
