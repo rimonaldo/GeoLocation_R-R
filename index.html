@@ -9,12 +9,17 @@
 <body>
     
 
-    <div class="layout">
+    <div>
         <header>
-            <h1>TravelTip</h1>
-            <input placeholder="Enter Location" type="search"> 
-            <button onclick="onAddMarker()" class="btn-add-marker">Go</button>
-            <button onclick="onGetUserPos()" class="btn-user-pos">My Location</button>
+            <div class="main-layout">
+                <h1>TravelTip</h1>
+                <div class="search-container">
+                    <input placeholder="Enter Location" type="search"> 
+                    <button onclick="onAddMarker()" class="btn-add-marker">Go</button>
+                    <button onclick="onGetUserPos()" class="btn-user-pos">My Location</button>
+                </div>  
+            </div>
+           
         </header>
         
         <section>

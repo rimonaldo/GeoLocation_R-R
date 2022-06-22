@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding:0 ;
+    box-sizing: border-box; 
+}
+
+body{
+    font-family: sans-serif;
+    background-color: #f58659;
+    width: 100vw;
+    height: 100vh;
+}
+
+.main-layout{
+    width: 90%;
+    border: 1px black solid;
+    
+}
+
+header{
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1{
+    /* margin-inline-start: 1rem; */
+}
+
+header .search-container{
+    /* margin-inline-end: 1em; */
+}
