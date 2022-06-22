@@ -1,5 +1,6 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
+import { utils } from '../utils/utils.js'
 
 const geoLoc_api = 'AIzaSyCjyt9JH-BnnLclS-0NmV9aUE7gv8ZtUHo'
 var geoLoc_url = `https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${geoLoc_api}`
@@ -30,9 +31,7 @@ window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 window.onAddLocation = onAddLocation
 
-
 function onInit() {
-
     mapService
         .initMap()
         .then(() => {
@@ -62,7 +61,7 @@ function onAddMarker() {
 function onGetLocs() {
     var pos = getCoords().then(pos => {
         console.log(pos.lat)
-        var copyText = gitPage +'lat'+ pos.lat + 'lng' + pos.lng 
+        var copyText = gitPage + 'lat' + pos.lat + 'lng' + pos.lng
         navigator.clipboard.writeText(copyText)
     })
 
@@ -87,8 +86,7 @@ function onPanTo() {
     mapService.panTo(35.6895, 139.6917)
 }
 
-
-function onAddLocation(){
-    console.log('added');
-    addLocation(name , lat, lng , id ,weather)
+function onAddLocation() {
+    console.log('added')
+    addLocation(name, lat, lng, id, weather)
 }

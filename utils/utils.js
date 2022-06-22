@@ -1,3 +1,9 @@
+export const utils = {
+    saveToStorage,
+    loadFromStorage,
+    makeId,
+}
+
 function saveToStorage(key, val) {
     const str = JSON.stringify(val)
     localStorage.setItem(key, str)
