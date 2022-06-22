@@ -22,11 +22,12 @@ function addLocation(name, lat, lng) {
         name,
         lat,
         lng,
-        weather,
-        createdAt,
+        weather : '',
+        createdAt: Date.now(),
         updatedAt: Date.now(),
     }
     locs.push(loc)
+    
     console.log(locs)
     return locs
 }

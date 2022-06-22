@@ -28,6 +28,8 @@ window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
+window.onAddLocation = onAddLocation
+
 
 function onInit() {
 
@@ -83,4 +85,10 @@ function onGetUserPos() {
 function onPanTo() {
     console.log('Panning the Map')
     mapService.panTo(35.6895, 139.6917)
+}
+
+
+function onAddLocation(){
+    console.log('added');
+    addLocation(name , lat, lng , id ,weather)
 }
