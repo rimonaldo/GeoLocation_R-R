@@ -61,9 +61,13 @@ main {
     main .right-container{
         margin-bottom: 1rem;
     }
-
+    
     .left-container{
         width: 100%;
+    }
+    
+    .weather{
+        padding-bottom: 1rem;     
     }
 
 }
