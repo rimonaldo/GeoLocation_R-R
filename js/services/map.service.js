@@ -2,6 +2,7 @@ export const mapService = {
     initMap,
     addMarker,
     panTo,
+    
 }
 
 var gMap

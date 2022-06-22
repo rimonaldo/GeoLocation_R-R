@@ -2,13 +2,14 @@ import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 import { utils } from '../../utils/utils.js'
 
+const LOCS_KEY = 'My_Locations'
 const geoLoc_api = 'AIzaSyCjyt9JH-BnnLclS-0NmV9aUE7gv8ZtUHo'
 var geoLoc_url = `https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${geoLoc_api}`
 const gitPage = 'https://rimonaldo.github.io/GeoLocation_R-R/'
 
 function getCoords(val) {
+   
     if (!val) val = document.querySelector('.search-container input').value
-    console.log(val)
     return axios
         .get(`https://maps.googleapis.com/maps/api/geocode/json?address=${val},+&key=${geoLoc_api}`)
         .then(res => res.data)
@@ -30,8 +31,10 @@ window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
 window.onAddLocation = onAddLocation
+window.renderLocations = renderLocations
 
 function onInit() {
+    renderLocations()
     mapService
         .initMap()
         .then(() => {
@@ -39,7 +42,6 @@ function onInit() {
         })
         .catch(() => console.log('Error: cannot init map'))
 
-    locService.addLocation('roy', 32, 32)
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -77,6 +79,7 @@ function onGetUserPos() {
             console.log('err!!!', err)
         })
 }
+
 function onPanTo() {
     console.log('Panning the Map')
     mapService.panTo(35.6895, 139.6917)
@@ -90,3 +93,17 @@ function onAddLocation() {
         locService.addLocation(name, pos.lat, pos.lng, id, )
     })
 }
+
+
+function renderLocations(){
+    const locs = utils.loadFromStorage(LOCS_KEY) || []
+    var elTable = document.querySelector('table')
+    
+    var strHTML = ''
+    locs.forEach((loc)=>{
+        strHTML += ` <tr><td>${loc.name}</td></tr>`
+    })
+
+    elTable.innerHTML = `<tbody>`+strHTML + '</tbody>'
+}
+                                
