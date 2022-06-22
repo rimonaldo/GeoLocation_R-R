@@ -13,9 +13,8 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
         gMap = new google.maps.Map(document.querySelector('#map'), {
             center: { lat, lng },
             zoom: 15,
-        })
+        }) 
         setQueryParams(gMap)
-        // console.log('Map!', gMap.center.lat())
     })
 }
 

@@ -53,21 +53,19 @@ function getPosition() {
 function onAddMarker() {
     var elSearchInput = document.querySelector('.search-container input').value
     onSetAdress(elSearchInput)
+    getCoords().then(pos=>{
+        mapService.addMarker(pos)
+    })
     console.log('Adding a marker')
     mapService.initMap()
-    mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 })
+    // mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 })
 }
 
 function onGetLocs() {
+    if(!document.querySelector('.search-container input').value) return
     var pos = getCoords().then(pos => {
-        console.log(pos.lat)
         var copyText = gitPage + 'lat' + pos.lat + 'lng' + pos.lng
         navigator.clipboard.writeText(copyText)
-    })
-
-    locService.getLocs().then(locs => {
-        console.log('Locations:', locs)
-        document.querySelector('.locs').innerText = JSON.stringify(locs)
     })
 }
 
