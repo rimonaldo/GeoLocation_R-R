@@ -2,6 +2,7 @@
     margin: 0;
     padding:0 ;
     box-sizing: border-box; 
+    
 }
 
 body{
@@ -13,7 +14,7 @@ body{
 
 .main-layout{
     width: 90%;
-    border: 1px black solid;
+    /* border: 1px black solid; */
     margin: 0 auto;
     overflow: hidden;
 }
@@ -32,13 +33,14 @@ header{
 
 .location-info{
     display: flex;
-    border: 1px black solid;
+    /* border: 1px black solid; */
     justify-content: space-between;
     width: 100%;
+    align-items: center;
 }
 
 .location-info button{
-
+    height: 1rem;
 }
 
 .location-info h3 , .location-info span{
@@ -50,12 +52,42 @@ main {
     
 }
 
-@media (max-width:650px) {   
+@media (max-width:750px) {   
+    body{
+        font-size: 0.8rem;
+    }
     main{
         margin: 0 auto;
         width: 80%;
         flex-direction: column-reverse;
     }
+
+    header .main-layout{
+        flex-direction: column;
+    }
+
+    header h1{
+        margin-bottom: 1rem;
+        
+    }
+    .search-container{
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        /* border: 1px black solid; */
+
+        height: 1rem;
+    }
+    
+    
+    .location-info{
+        margin: 0 auto;
+        width: 80%;
+        line-height: 2rem;
+        
+    }
+
+
 
     main .right-container{
         margin-bottom: 1rem;
@@ -71,12 +103,16 @@ main {
 
 }
 
+.location-info button{
+    
+}
+
 .left-container{
     display: flex;
     flex-direction: column;
     flex-basis: 50%;
     margin-inline-end: 1rem ;
-    border: 1px black solid;
+    /* border: 1px black solid; */
     justify-content: space-between;
     height: 400px;
     row-gap: 1rem;
