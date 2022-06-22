@@ -135,5 +135,9 @@ table{
     border: 1px black solid;
 }
 
-
+table .row {
+    border: 1px black solid;
+    display: flex;
+    justify-content: flex-end;
+}
 

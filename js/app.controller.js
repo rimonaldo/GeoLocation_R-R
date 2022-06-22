@@ -8,7 +8,6 @@ var geoLoc_url = `https://maps.googleapis.com/maps/api/geocode/json?address=1600
 const gitPage = 'https://rimonaldo.github.io/GeoLocation_R-R/'
 
 function getCoords(val) {
-   
     if (!val) val = document.querySelector('.search-container input').value
     return axios
         .get(`https://maps.googleapis.com/maps/api/geocode/json?address=${val},+&key=${geoLoc_api}`)
@@ -17,12 +16,12 @@ function getCoords(val) {
         .then(pos => pos.geometry.location)
 }
 
-function setAdress({ lat, lng }) {
+function _setAdress({ lat, lng }) {
     mapService.initMap(lat, lng)
 }
 
 function onSetAdress(val) {
-    getCoords(val).then(pos => setAdress(pos))
+    getCoords(val).then(pos => _setAdress(pos))
 }
 
 window.onload = onInit
@@ -33,6 +32,7 @@ window.onGetUserPos = onGetUserPos
 window.onAddLocation = onAddLocation
 window.onSetUserLocation = onSetUserLocation
 window.renderLocations = renderLocations
+window.renderTitle = renderTitle
 
 function onInit() {
     renderLocations()
@@ -52,8 +52,10 @@ function getPosition() {
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
 }
-
+// GO BUTTON onclick
 function onAddMarker() {
+    renderTitle()
+    if(!document.querySelector('.search-container input').value) return
     var elSearchInput = document.querySelector('.search-container input').value
     onSetAdress(elSearchInput)
     getCoords().then(pos => {
@@ -104,12 +106,24 @@ function onSetUserLocation() {
 function renderLocations(){
     const locs = utils.loadFromStorage(LOCS_KEY) || []
     var elTable = document.querySelector('table')
-    
     var strHTML = ''
     locs.forEach((loc)=>{
-        strHTML += ` <tr><td>${loc.name}</td></tr>`
+        
+        strHTML += `<tr class="row" id="${loc.id}"><td>${loc.name}  </td> 
+                        <td><button>go</button></td> 
+                        <td><button>X</button></td>
+                    </tr>`             
     })
 
     elTable.innerHTML = `<tbody>`+strHTML + '</tbody>'
+}
+
+function renderTitle(){
+    if(!document.querySelector('.search-container input').value) return
+    
+    const locs = utils.loadFromStorage(LOCS_KEY) || []
+    var strHTML = document.querySelector('.search-container input').value
+    var elTitle = document.querySelector('.location-info h3')
+    elTitle.innerHTML = strHTML
 }
                                 
