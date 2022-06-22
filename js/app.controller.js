@@ -9,7 +9,7 @@ const gitPage = 'https://rimonaldo.github.io/GeoLocation_R-R/'
 
 function getCoords(val) {
     if (!val) val = document.querySelector('.search-container input').value
-    console.log(val);
+    
     return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${val},+&key=${geoLoc_api}`)
         .then(res => res.data)
         .then(pos => pos.results[0])
