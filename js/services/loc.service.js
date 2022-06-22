@@ -22,12 +22,12 @@ function addLocation(name, lat, lng) {
         name,
         lat,
         lng,
-        weather,
+        weather: '',
         createdAt: Date.now(),
         updatedAt: Date.now(),
     }
     locs.push(loc)
-    // SavetoStorage
+
     console.log(locs)
     return loc
 }
