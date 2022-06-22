@@ -2,27 +2,24 @@ import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 
 
-const geoLoc_api ='AIzaSyCjyt9JH-BnnLclS-0NmV9aUE7gv8ZtUHo'
+const geoLoc_api = 'AIzaSyCjyt9JH-BnnLclS-0NmV9aUE7gv8ZtUHo'
 var geoLoc_url = `https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${geoLoc_api}`
 
-setAdress('j','r','q')
 
-function setAdress(...vals){
-    console.log(...vals);
 
-    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${geoLoc_api}`)
-        .then(res=> res.data)
-        .then(pos=>{
-            console.log(pos.results[0]);
-            return pos.results[0]})
-        .then(pos => {
-            console.log(pos.geometry);
-        })
-        
-            
-        
+function setAdress({lat,lng}) {
+    // console.log(pos);
+    mapService.initMap(lat , lng)
+}
 
-   
+function onSetAdress(...vals) {
+    console.log(vals);
+
+    var pos = axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${vals[0]}+${vals[1]}+,${vals[2]}+${vals[3]}+${vals[4]},+&key=${geoLoc_api}`)
+        .then(res => res.data)
+        .then(pos => pos.results[0])
+        .then(pos => setAdress(pos.geometry.location))
+
 }
 
 
@@ -49,6 +46,8 @@ function getPosition() {
 }
 
 function onAddMarker() {
+    var elSearchInput = document.querySelector('.search-container input').value
+    onSetAdress(elSearchInput)
     console.log('Adding a marker');
     mapService.initMap()
     mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
