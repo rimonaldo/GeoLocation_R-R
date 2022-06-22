@@ -1,6 +1,31 @@
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
 
+
+const geoLoc_api ='AIzaSyCjyt9JH-BnnLclS-0NmV9aUE7gv8ZtUHo'
+var geoLoc_url = `https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${geoLoc_api}`
+
+setAdress('j','r','q')
+
+function setAdress(...vals){
+    console.log(...vals);
+
+    axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${geoLoc_api}`)
+        .then(res=> res.data)
+        .then(pos=>{
+            console.log(pos.results[0]);
+            return pos.results[0]})
+        .then(pos => {
+            console.log(pos.geometry);
+        })
+        
+            
+        
+
+   
+}
+
+
 window.onload = onInit;
 window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
@@ -25,6 +50,7 @@ function getPosition() {
 
 function onAddMarker() {
     console.log('Adding a marker');
+    mapService.initMap()
     mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
 }
 

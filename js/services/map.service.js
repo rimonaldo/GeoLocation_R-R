@@ -5,6 +5,21 @@ export const mapService = {
     
 }
 
+// const geoLoc_api ='AIzaSyCjyt9JH-BnnLclS-0NmV9aUE7gv8ZtUHo'
+// var geoLoc_url = `https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${geoLoc_api}`
+
+// setAdress('j','r','q')
+
+// function setAdress(...vals){
+//     console.log(...vals);
+
+//     fetch.get(`https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${geoLoc_api}`).data
+//         .then((pos)=>{
+//             console.log(pos);
+//         })
+
+//     `https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=${geoLoc_api}`
+// }
 var gMap
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
@@ -51,14 +66,13 @@ function _connectGoogleApi() {
 }
 
 
-
-function getPos(map){
+function getPosParams(map){
     return {lat: map.center.lat() , lng: map.center.lng()}
 }
 
 
 function setQueryParams(map){
-    var pos = getPos(map)
+    var pos = getPosParams(map)
     const queryStringParams = `?lat=${pos.lat}&lng=${pos.lng}`
     const newUrl = window.location.protocol + '//' + window.location.host + window.location.pathname + queryStringParams
     window.history.pushState({ path: newUrl }, '', newUrl)
